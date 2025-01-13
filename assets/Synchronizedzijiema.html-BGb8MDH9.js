@@ -1,0 +1,67 @@
+import{_ as s,c as a,a as e,o as p}from"./app-CtC7YmlN.js";const t={};function c(i,n){return p(),a("div",null,n[0]||(n[0]=[e(`<h2 id="code" tabindex="-1"><a class="header-anchor" href="#code"><span>Code</span></a></h2><div class="language-java line-numbers-mode" data-highlighter="prismjs" data-ext="java" data-title="java"><pre><code><span class="line">	<span class="token annotation punctuation">@Slf4j</span></span>
+<span class="line"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SyncDemo2</span> <span class="token punctuation">{</span></span>
+<span class="line"></span>
+<span class="line">    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">int</span> counter <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line">    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token class-name">String</span> lock <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line">    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">increment</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">        <span class="token keyword">synchronized</span> <span class="token punctuation">(</span>lock<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">            counter<span class="token operator">++</span><span class="token punctuation">;</span></span>
+<span class="line">        <span class="token punctuation">}</span></span>
+<span class="line">    <span class="token punctuation">}</span></span>
+<span class="line"></span>
+<span class="line">    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">incr</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">        counter<span class="token operator">++</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token punctuation">}</span></span>
+<span class="line"></span>
+<span class="line">    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">decrement</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">        <span class="token keyword">synchronized</span> <span class="token punctuation">(</span>lock<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">            counter<span class="token operator">--</span><span class="token punctuation">;</span></span>
+<span class="line">        <span class="token punctuation">}</span></span>
+<span class="line">    <span class="token punctuation">}</span></span>
+<span class="line"></span>
+<span class="line">    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">InterruptedException</span> <span class="token punctuation">{</span></span>
+<span class="line">        <span class="token class-name">Thread</span> t1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Thread</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-&gt;</span> <span class="token punctuation">{</span></span>
+<span class="line">                <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">5000</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">                    <span class="token function">increment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">                <span class="token punctuation">}</span></span>
+<span class="line">        <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">&quot;t1&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">        <span class="token class-name">Thread</span> t2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Thread</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-&gt;</span> <span class="token punctuation">{</span></span>
+<span class="line">            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">5000</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">                <span class="token function">decrement</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">            <span class="token punctuation">}</span></span>
+<span class="line">        <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">&quot;t2&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">        t1<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">        t2<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">        t1<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">        t2<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line">        <span class="token comment">//思考： counter=？</span></span>
+<span class="line">        log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">&quot;counter={}&quot;</span><span class="token punctuation">,</span> counter<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token punctuation">}</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="字节码" tabindex="-1"><a class="header-anchor" href="#字节码"><span>字节码</span></a></h2><h3 id="increment" tabindex="-1"><a class="header-anchor" href="#increment"><span>increment</span></a></h3><div class="language-tex line-numbers-mode" data-highlighter="prismjs" data-ext="tex" data-title="tex"><pre><code><span class="line"> 0 getstatic #2 &lt;com/tuling/jucdemo/sync/SyncDemo2.lock : Ljava/lang/String;&gt;</span>
+<span class="line"> 3 dup</span>
+<span class="line"> 4 astore_0</span>
+<span class="line"> 5 monitorenter // 监视器 in</span>
+<span class="line"> 6 getstatic #3 &lt;com/tuling/jucdemo/sync/SyncDemo2.counter : I&gt;</span>
+<span class="line"> 9 iconst_1</span>
+<span class="line">10 iadd</span>
+<span class="line">11 putstatic #3 &lt;com/tuling/jucdemo/sync/SyncDemo2.counter : I&gt;</span>
+<span class="line">14 aload_0</span>
+<span class="line">15 monitorexit // 监视器 out</span>
+<span class="line">16 goto 24 (+8)</span>
+<span class="line">19 astore_1</span>
+<span class="line">20 aload_0</span>
+<span class="line">21 monitorexit</span>
+<span class="line">22 aload_1</span>
+<span class="line">23 athrow</span>
+<span class="line">24 return</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="incr" tabindex="-1"><a class="header-anchor" href="#incr"><span>incr</span></a></h3><div class="language-tex line-numbers-mode" data-highlighter="prismjs" data-ext="tex" data-title="tex"><pre><code><span class="line">0 getstatic #3 &lt;com/tuling/jucdemo/sync/SyncDemo2.counter : I&gt;</span>
+<span class="line">3 iconst_1</span>
+<span class="line">4 iadd</span>
+<span class="line">5 putstatic #3 &lt;com/tuling/jucdemo/sync/SyncDemo2.counter : I&gt;</span>
+<span class="line">8 return</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>`,7)]))}const o=s(t,[["render",c],["__file","Synchronizedzijiema.html.vue"]]),u=JSON.parse('{"path":"/series/back-end/concurrent/Synchronizedzijiema.html","title":"Synchronized字节码","lang":"en-US","frontmatter":{"title":"Synchronized字节码","date":"2021/12/16","tags":["Synchronized"],"categories":["back-end"]},"headers":[{"level":2,"title":"Code","slug":"code","link":"#code","children":[]},{"level":2,"title":"字节码","slug":"字节码","link":"#字节码","children":[{"level":3,"title":"increment","slug":"increment","link":"#increment","children":[]},{"level":3,"title":"incr","slug":"incr","link":"#incr","children":[]}]}],"git":{"createdTime":1736659621000,"updatedTime":1736659621000,"contributors":[{"name":"iniconico","email":"632546065@qq.com","commits":1}]},"filePathRelative":"series/back-end/concurrent/Synchronized字节码.md"}');export{o as comp,u as data};
